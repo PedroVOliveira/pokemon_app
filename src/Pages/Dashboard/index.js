@@ -21,7 +21,7 @@ function Dashboard() {
         e.preventDefault();
         await api.get(`${pokemon}`).then(response =>{
             let parserPokemon;
-            if(pokemonsInfos){
+            if(pokemonsInfos) {
                 setPokemonsInfos([...pokemonsInfos,response.data]);
                 parserPokemon = JSON.stringify([...pokemonsInfos,response.data]);
                 localStorage.setItem("@pokemon",parserPokemon);
@@ -31,11 +31,7 @@ function Dashboard() {
                 localStorage.setItem("@pokemon", parserPokemon);
             }
 
-
-            console.log(response.data);
-        });
-
-        
+        }); 
     }
 
 
@@ -53,9 +49,9 @@ function Dashboard() {
                     {pokemonsInfos && pokemonsInfos.map((pokemonInfo,index) =>(
                         
                         <PokeCard key={pokemonInfo.id}>
-                            <img src={pokemonInfo.sprites.front_default} alt={'Foto do pokemon'}/>
+                            <img src={pokemonInfo.sprites.front_default} alt="Foto do pokemon"/>
                             <PokeName>{pokemonInfo.name}</PokeName>
-                            <Link to="/profile/">
+                            <Link to={`/profile/${pokemonInfo.name}`}>
                                 Ver detalhes
                             </Link>
                         </PokeCard>

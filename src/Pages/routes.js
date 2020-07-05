@@ -13,7 +13,7 @@ function Routes() {
             />
             <Route
                 component={Profile}
-                path="/profile"
+                path="/profile/:name"
             />
         </BrowserRouter>
     )

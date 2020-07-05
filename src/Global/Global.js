@@ -45,4 +45,8 @@ table {
 	border-spacing: 0;
 }
 
+#root {
+	display:flex;
+}
+
 `
