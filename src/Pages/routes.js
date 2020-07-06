@@ -8,7 +8,7 @@ function Routes() {
         <BrowserRouter>
             <Route 
                 component={Dashboard}
-                path="/"
+                path="/pokemon_app"
                 exact
             />
             <Route
