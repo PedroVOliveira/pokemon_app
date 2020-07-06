@@ -47,7 +47,7 @@ function Profile() {
                         <strong>{pokemonInfo.types[0].type.name}</strong>
                     </div>
                 </StatusGrid>
-                <Link to="/">
+                <Link to="/pokemon_app">
                     Voltar
                 </Link>
               </Container>
