@@ -1,57 +1,52 @@
 import React,{ useState,useEffect, } from 'react';
-import api from '../../services/api';
-import { useParams,Link } from 'react-router-dom';
+import api, {getList} from '../../services/api';
+import { useParams,Link, useHistory } from 'react-router-dom';
 import { Container,FlexList,PokeName,StatusGrid } from './styled';
 
 function Profile() {
-    const [pokemonsInfos,setPokemonsInfos] = useState([]);
+    const [pokemonsInfos,setPokemonsInfos] = useState(null);
     // Pega o nome da Rota
     const { name } = useParams();
+    const history = useHistory();
+
     useEffect(()=>{
-        async function handlerSearchPokemon() {
-            await api.get(`${name}`).then(response => {
-                setPokemonsInfos([response.data]);
-            })
-        }
-
-        handlerSearchPokemon();
-
-    },[])
+        const list = getList();
+        const pokemon = list.find((poke) => poke.name === name);
+        setPokemonsInfos(pokemon);
+    },[name])
 
     return (
         <>
-          {pokemonsInfos && pokemonsInfos.map((pokemonInfo) => (
-              <Container key={pokemonInfo.id}>
+          {pokemonsInfos && (
+              <Container>
                 <FlexList>
-                    <li><img src={pokemonInfo.sprites.front_default} /></li>
-                    <li><img src={pokemonInfo.sprites.back_default} /></li>
-                    <li><img src={pokemonInfo.sprites.front_female} /></li>
-                    <li><img src={pokemonInfo.sprites.back_female} /></li>
+                    <li><img src={pokemonsInfos.sprites.front_default} /></li>
+                    <li><img src={pokemonsInfos.sprites.back_default} /></li>
+                    <li><img src={pokemonsInfos.sprites.front_female} /></li>
+                    <li><img src={pokemonsInfos.sprites.back_female} /></li>
                 </FlexList>
-                <PokeName>{pokemonInfo.name}</PokeName>
+                <PokeName>{pokemonsInfos.name}</PokeName>
                 <StatusGrid>
                     <div>
                         <h4>Height</h4>
-                        <strong>{pokemonInfo.height}</strong>
+                        <strong>{pokemonsInfos.height}</strong>
                     </div>
                     <div>
                         <h4>Weight</h4>
-                        <strong>{pokemonInfo.weight}</strong>
+                        <strong>{pokemonsInfos.weight}</strong>
                     </div>
                     <div>
                         <h4>Skills</h4>
-                        <strong>{pokemonInfo.abilities[0].ability.name}, {pokemonInfo.abilities[1].ability.name}</strong>
+                        <strong>{pokemonsInfos.abilities[0].ability.name}, {pokemonsInfos.abilities[1].ability.name}</strong>
                     </div>
                     <div>
                         <h4>Type</h4>
-                        <strong>{pokemonInfo.types[0].type.name}</strong>
+                        <strong>{pokemonsInfos.types[0].type.name}</strong>
                     </div>
                 </StatusGrid>
-                <Link to="/pokemon_app">
-                    Voltar
-                </Link>
+                <button onClick={history.goBack}>Voltar</button>
               </Container>
-          ))}
+          )}
         </>
     )
 }

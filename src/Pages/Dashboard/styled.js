@@ -21,10 +21,10 @@ export const Search = styled.input`
     border-radius:2px;   
 `
 
-export const Button = styled.a`
+export const Button = styled.button`
     background-color:lightcoral;
     color:#fff;
-    padding:11px 22px;
+    padding:12px 22px;
     border:0;
     border-radius:3px;
     margin-left:5px;

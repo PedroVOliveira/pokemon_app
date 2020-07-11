@@ -8,12 +8,14 @@ export const Container = styled.div`
     font-family:'Roboto', sans-serif;
     margin-top:80px;
 
-    a {
-        display:inherit;
-        text-align:center;
+    button {
+        width:100%;
         margin:20px 0;
         text-decoration:none;
         color:lightcoral;
+        border:0;
+        background:transparent;
+        outline:none;
     }
 `
 export const StatusGrid = styled.div`
