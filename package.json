@@ -2,7 +2,7 @@
   "name": "app_react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://pedrovoliveira.github.io/Pokemon_App/",
+  "homepage": "https://pedrovoliveira.github.io/pokemon_app/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

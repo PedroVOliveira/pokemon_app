@@ -54,6 +54,7 @@ export const PokeCard = styled.div`
         margin-top:-15px;
         margin-bottom:5px;
     }
+    
     a {
         text-decoration:none;
         color:lightcoral;
@@ -64,4 +65,16 @@ export const PokeCard = styled.div`
 export const PokeName = styled.h3`
     font-size:16pt;
     color:#000;
+`
+
+export const FiltersComponents = styled.div`
+    width:700px;
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+
+    button {
+        width:120px;
+        margin:0 8px;
+    }
 `

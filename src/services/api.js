@@ -18,6 +18,7 @@ function setList(list) {
     localStorage.setItem("@pokemon",JSON.stringify(list));
 }
 
+
 export async function searchPokemon(pokemon) {
     const { data } = await api.get(`${pokemon}`);
     const list = getList();

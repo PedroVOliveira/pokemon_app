@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Search, Title,Button,ContainerGrid,PokeCard,PokeName} from './styled';
+import Filters from './components/filtersbutton';
 import { Link } from 'react-router-dom';
 import api, { searchPokemon,getList } from '../../services/api';
 function Dashboard() {
@@ -25,10 +26,11 @@ function Dashboard() {
                 value={pokemon}
             />
             <Button onClick={handleSearchPokemon}>Search</Button>
+            <Filters/>
             <ContainerGrid>
                 {pokemonsInfos && pokemonsInfos.map((pokemonInfo,index) =>(
                     <PokeCard key={index}>
-                        <img src={pokemonInfo.sprites.front_default} alt="Foto do pokemon"/>
+                        <img src={ pokemonInfo.sprites.front_default } alt="Foto do pokemon"/>
                         <PokeName>{pokemonInfo.name}</PokeName>
                         <Link to={`/profile/${pokemonInfo.name}`}>
                             Ver detalhes
